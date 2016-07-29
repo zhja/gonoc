@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>test</title>
+<script type="text/javascript" src="../static/js/183.js?v=v1.0.1"></script>
+</head>
+
+<body>
+hello
+
+<script language="javascript" type="text/javascript">
+var header = ["Id", "Sn", "Hostname", "IdcName", "IdcCname", "Event", "Status", "Status_id"];
+var where = [["Sn" , "10", "like", "and"],["Event", "2016Q2"],["Status", "上线"]];
+var order = [["Idc_id", "DESC"],["Sn", "ASC"]];
+header = JSON.stringify(header);
+where = JSON.stringify(where);
+order = JSON.stringify(order);
+var data = {
+	header : header,
+	where : where,
+	order : order,
+	start : 10,
+	offset : 0
+};
+$.ajax({
+   type: "POST",
+   url: "http://192.168.210.130/api/test",
+   data: data,
+   success: function(msg){
+     //alert(1);
+   }
+});
+</script>
+</body>
+</html>

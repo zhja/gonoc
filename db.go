@@ -30,6 +30,10 @@ func (db *DB) ShowSql() string {
 	return db.sqlInfo
 }
 
+func (db *DB) ShowCountSql() string {
+	return db.sqlCountInfo
+}
+
 func (db *DB) cleanSql() {
 	db.sqlCountInfo = ""
 	db.sqlInfo = ""
@@ -82,8 +86,10 @@ func (db *DB) OrderBy(field, value string) {
 		var order string
 		if !strings.Contains(db.sqlOrderBy, "ORDER BY") {
 			order = "ORDER BY"
+		} else {
+			order = ","
 		}
-		db.sqlOrderBy = fmt.Sprintf("%s, %s `%s` %s",
+		db.sqlOrderBy = fmt.Sprintf("%s %s `%s` %s",
 			db.sqlOrderBy,
 			order,
 			field,
